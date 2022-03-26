@@ -1,0 +1,81 @@
+.text-light {
+	color: $light;
+}
+.text-dark {
+	color: $dark;
+}
+.text-center {
+	margin: auto;
+	text-align: center;
+}
+
+.btn-primary {
+	@include btn($primary);
+}
+.btn-accent {
+	@include btn($accent);
+}
+.btn-secondary {
+	@include btn($secondary);
+
+	color: black;
+}
+.btn-light {
+	@include btn($light);
+
+	color: black;
+}
+.btn-dark {
+	@include btn($dark);
+
+	color: white;
+}
+.btn-red {
+	@include btn($red);
+
+	color: white;
+}
+.rounded {
+	border-radius: 50px;
+}
+.w-100 {
+	width: 100%;
+}
+.w-50 {
+	width: 50%;
+}
+.bg-dark {
+	background-color: $dark;
+}
+.bg-light {
+	background-color: $light;
+}
+.m-auto {
+	margin: auto;
+}
+.heading {
+	width: fit-content;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	max-width: 330px;
+	text-align: center;
+
+	@include tab {
+		all: unset;
+		display: flex;
+		width: fit-content;
+		flex-direction: column;
+		margin-bottom: 2rem;
+	}
+
+	span {
+		display: block;
+		width: 50%;
+		height: 5px;
+		border-radius: 2px;
+
+		margin-top: -10px;
+	}
+}

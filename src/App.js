@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import React, { useState } from "react";
+import Header from "./components/Header";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./components/Home";
+import Deli from "./components/Deli";
+import HomeLoading from "./components/HomeLoading";
+const App = () => {
+	const [showNews, setShowNews] = useState(true);
+	const [showLoader, setShowLoader] = useState(true);
+	const logNow = () => {
+		setShowLoader(false);
+	};
+	window.addEventListener("load", logNow);
+	return showLoader ? (
+		<HomeLoading />
+	) : (
+		<Router>
+			<div className='App'>
+				<Header />
+				<Switch>
+					<Route exact path='/' component={Home} />
+					<Route exact path='/deli' component={Deli} />
+				</Switch>
+			</div>
+		</Router>
+	);
+};
 
 export default App;

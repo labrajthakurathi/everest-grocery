@@ -1,0 +1,1036 @@
+@import "./1helper";
+@import "./2classes";
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Koh Santepheap", cursive;
+	-webkit-font-smoothing: antialiased;
+	scroll-behavior: smooth;
+	box-sizing: border-box;
+	font-size: 0.9em;
+	@include tab {
+		font-size: 1em;
+	}
+}
+
+//header
+.header-container {
+	height: 80px;
+	width: 100%;
+	background-color: transparent;
+
+	nav {
+		height: 80px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0px 25px;
+
+		.hamburger {
+			width: 45px;
+			display: block;
+			z-index: 5;
+			&:hover {
+				cursor: pointer;
+			}
+			span {
+				margin-bottom: 5px;
+				display: block;
+				height: 4px;
+				width: 100%;
+				background-color: $accent;
+				border-radius: 2px;
+				transition: all 300ms ease-in-out;
+				z-index: 3;
+				&:nth-child(2) {
+					width: 80% !important;
+				}
+				&:nth-child(3) {
+					width: 60% !important;
+				}
+			}
+			@include desk {
+				display: none;
+			}
+		}
+		.open {
+			span {
+				&:nth-child(1) {
+					margin-bottom: 15px;
+					transform: rotate(40deg);
+					transform-origin: left;
+					height: 4px;
+				}
+				&:nth-child(2) {
+					margin-left: -100px;
+				}
+				&:nth-child(3) {
+					width: 100% !important;
+					transform: rotate(-40deg);
+					transform-origin: left;
+					height: 4px;
+				}
+			}
+		}
+		.logo {
+			z-index: 5;
+			img {
+				margin-top: 10px;
+				height: 90px;
+				width: auto;
+				@include tab {
+					height: 100px;
+				}
+
+				@include desk {
+					margin-top: 30px;
+					height: 100px;
+					width: auto;
+				}
+			}
+		}
+	}
+	.list-wrapper {
+		background-color: $accent;
+		color: $light;
+		position: absolute;
+		width: 100%;
+		transition: all 300ms ease-in-out;
+		left: -100%;
+		z-index: 3;
+		@include desk {
+			all: unset;
+			float: right;
+			width: 50%;
+			height: 10px !important;
+			padding-right: 50px;
+		}
+
+		ul {
+			display: flex;
+			justify-content: center;
+			align-items: center !important;
+			flex-direction: column;
+			padding: 20px 0;
+			margin: 0;
+
+			@include desk {
+				all: unset;
+				width: 95%;
+				position: relative;
+				top: -50px;
+				display: flex;
+				justify-content: space-between;
+			}
+			a {
+				z-index: 5;
+				color: $light;
+				text-decoration: none;
+
+				&:hover {
+					cursor: pointer;
+					color: $accent !important;
+				}
+				li {
+					list-style: none;
+					padding: 10px 0;
+					font-weight: bold;
+					font-size: 1.2rem;
+					width: 100%;
+					text-align: center;
+					transition: all 200ms ease-in-out;
+					&:hover {
+						transform: scale(1.1);
+						color: white;
+					}
+
+					@include desk {
+						color: $accent;
+						font-weight: bold;
+						font-size: 1.1rem;
+						&:hover {
+							cursor: pointer;
+							color: $accent;
+						}
+					}
+				}
+				.deli-btn {
+					@include btn($dark);
+					border-radius: 30px;
+					width: 100px;
+					@include desk {
+						@include btn($accent);
+						border-radius: 30px;
+					}
+					&:hover {
+						color: white;
+					}
+				}
+			}
+		}
+	}
+
+	.open {
+		left: 0%;
+	}
+}
+
+//end header
+
+//landing-page
+.landing-page {
+	height: calc(100vh - 150px);
+	width: 100%;
+	background-color: $light;
+	overflow: hidden;
+	padding: 0;
+	@include desk {
+		height: calc(100vh - 100px);
+	}
+
+	.wave {
+		height: 50vh;
+		width: 100%;
+		@include desk {
+			height: 100vh;
+			width: 50%;
+		}
+		img {
+			width: 100%;
+			height: 50vh;
+			z-index: 3;
+			margin-top: -90px;
+			@include desk {
+				height: 100% !important;
+			}
+		}
+	}
+	.landing-content {
+		@include flex;
+		flex-direction: column;
+		height: 90vh;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		overflow: hidden;
+
+		@include desk {
+			flex-direction: row;
+			height: 100vh;
+			width: 100%;
+		}
+
+		.cart {
+			width: 90%;
+
+			@include tab {
+				width: 70%;
+			}
+			@include desk {
+				order: 2;
+				height: 400px;
+				width: auto;
+				margin-right: 5%;
+			}
+		}
+
+		.texts {
+			margin: -30px 8% 0 8%;
+
+			@include desk {
+				order: 1;
+			}
+
+			h1 {
+				font-size: 1.8rem;
+				opacity: 0.9;
+				max-width: 550px;
+				font-weight: 900;
+
+				text-shadow: 1px 1px 1px rgb(203, 203, 203);
+				@include tab {
+					font-size: 2rem;
+				}
+				@include desk {
+					font-size: 2.4rem;
+					min-width: 550px;
+				}
+			}
+			a {
+				display: flex;
+				width: auto;
+				max-width: 300px;
+
+				text-decoration: none;
+				justify-content: center;
+				@include desk {
+					width: 400px;
+				}
+			}
+		}
+	}
+}
+//end landing-page
+
+//services-page
+
+.services-page {
+	background-image: linear-gradient(
+		to bottom,
+		#ffffff,
+		#fbfbfb,
+		#f7f7f7,
+		#f3f3f3,
+		#efefef
+	);
+	padding: 0px 30px 30px 30px;
+	.heading {
+		@include tab {
+			margin-left: 10%;
+		}
+		@include large {
+			margin-left: 15%;
+		}
+	}
+	.services-page-content {
+		padding: 50px 0;
+
+		margin: auto;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		@include desk {
+			grid-template-columns: 1fr 1fr 1fr;
+			max-width: 1600px;
+		}
+
+		.item {
+			@include flex;
+			margin: 10px auto;
+			flex-direction: column;
+
+			.icon {
+				background-color: $accent;
+				height: 70px;
+				width: 70px;
+				border-radius: 50%;
+				@include flex;
+				i {
+					font-size: 1.8rem;
+					color: $light;
+				}
+			}
+			p {
+				opacity: 0.8;
+				text-align: center;
+				font-weight: 500;
+			}
+		}
+		.item-last {
+			grid-column-start: 1;
+			grid-column-end: 3;
+			@include desk {
+				grid-column-start: 2;
+				grid-column-end: 3;
+			}
+		}
+	}
+}
+//end services-page
+
+//gallery page
+
+.gallery-page {
+	position: relative;
+
+	width: 100%;
+
+	&::before {
+		content: "";
+		background: url(../images//gallery-bg.png);
+		background-size: cover;
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		left: 0px;
+		opacity: 0.15;
+		z-index: -1;
+	}
+	.heading {
+		margin-bottom: 40px;
+		@include tab {
+			margin-left: 10%;
+		}
+		@include large {
+			margin-left: 15%;
+		}
+	}
+	.gallery-sec {
+		width: 90%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		margin: 30px auto;
+		.gallery {
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			@include tab {
+				height: 370px;
+			}
+			@include desk {
+				height: 600px;
+			}
+
+			.slide {
+				opacity: 0;
+
+				width: 100%;
+				@include flex;
+
+				.img {
+					width: 90%;
+					height: 230px;
+					border-radius: 10px;
+					object-fit: cover;
+					opacity: 0.9;
+
+					@include tab {
+						width: 90%;
+						height: auto;
+						max-width: 600px;
+						max-height: 350px;
+					}
+					@include desk {
+						width: 80%;
+						height: auto;
+						max-width: 800px;
+						max-height: 500px;
+					}
+				}
+			}
+			.active {
+				position: absolute;
+				transform: scale(1.1);
+				opacity: 1;
+				transition: all 300ms ease-in;
+			}
+		}
+		.dots {
+			margin-bottom: -1rem;
+			margin-top: 1.2rem;
+			display: flex;
+			width: 80%;
+			flex-wrap: wrap;
+			justify-content: center;
+
+			span {
+				height: 5px;
+				width: 5px;
+				border-radius: 50%;
+				background-color: rgb(159, 159, 159);
+				display: block;
+				margin: 2px;
+				transition: all 200ms ease-in-out;
+			}
+			.current {
+				transform: scale(1.8);
+				background-color: rgb(24, 24, 24);
+				transition: all 200ms ease-in-out;
+			}
+		}
+
+		.icons {
+			z-index: 9;
+			width: 300px;
+			margin-top: 30px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			@include desk {
+				width: 90%;
+				position: absolute;
+				max-width: 1100px;
+			}
+			.item {
+				height: 50px;
+				width: 50px;
+				border-radius: 50%;
+				@include flex;
+				background-color: $accent;
+				transition: all 200ms ease-in-out;
+				&:hover {
+					cursor: pointer;
+					transform: scale(1.1);
+				}
+				&:active {
+					transform: scale(1);
+					background-color: darken($accent, 30%);
+				}
+				i {
+					font-size: 2rem;
+					color: $light;
+				}
+			}
+		}
+	}
+}
+
+//end gallery page
+
+//review page
+
+.testimonial {
+	.heading {
+		@include tab {
+			margin-left: 10%;
+		}
+
+		@include large {
+			margin-left: 15%;
+		}
+	}
+
+	.arrows {
+		position: relative;
+		bottom: -200px;
+
+		@include flex;
+		justify-content: space-between;
+		@include tab {
+			bottom: -150px;
+		}
+		&:hover {
+			cursor: pointer;
+		}
+		i {
+			font-size: 1.3rem;
+			text-shadow: 1px 1px 4px rgb(16, 16, 16);
+			@include desk {
+				font-size: 1.5rem;
+			}
+			color: $accent;
+		}
+	}
+	.content {
+		@include flex;
+		flex-direction: column;
+		padding: 20px;
+
+		@include desk {
+			flex-direction: row;
+			justify-content: space-evenly;
+			max-width: 1600px;
+			margin: auto;
+		}
+		.section-wrapper {
+			position: relative;
+			.dots {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				.dot {
+					transition: all 300ms ease-in-out;
+					height: 7px;
+					width: 7px;
+					border-radius: 50%;
+					background-color: $dark;
+					margin: 5px;
+				}
+				.current {
+					background-color: $accent;
+					transform: scale(1.3);
+				}
+			}
+			.slide {
+				transition: all 300ms ease-in-out;
+				position: absolute;
+				left: -3000px;
+				top: 0px;
+				opacity: 0;
+				transform: scale(0.8);
+
+				.reviews {
+					margin: 20px;
+
+					.top img {
+						height: 10px;
+						width: 10px;
+						object-fit: cover;
+						border-radius: 50%;
+					}
+					.text {
+						max-width: 400px;
+						i {
+							font-size: 0.7rem;
+							vertical-align: super;
+						}
+					}
+					.name {
+						font-weight: bold;
+					}
+					span {
+						display: block;
+						height: 15px;
+						width: 80px;
+						background-color: $accent;
+						position: relative;
+						margin: auto;
+					}
+				}
+			}
+			.active {
+				transition: all 300ms ease-in-out;
+
+				.reviews {
+					margin: 20px;
+					display: flex;
+					flex-direction: column;
+					@include tab {
+						flex-direction: row;
+						padding: 20px;
+						.bottom {
+							margin-left: 2rem;
+							text-align: left;
+							span {
+								display: block;
+								height: 4px;
+								width: 80px;
+								background-color: $accent;
+								margin-left: 0;
+							}
+							.text {
+								text-align: left;
+							}
+						}
+					}
+					img {
+						height: 200px;
+						width: 200px;
+						border-radius: 50%;
+						object-fit: cover;
+					}
+
+					.text {
+						max-width: 400px;
+						opacity: 0.8;
+						text-align: center;
+						font-weight: 500;
+						i {
+							font-size: 0.7rem;
+							vertical-align: super;
+						}
+					}
+					.name {
+						font-weight: bold;
+					}
+					span {
+						display: block;
+						height: 4px;
+						width: 80px;
+						background-color: $accent;
+						position: relative;
+						margin: auto;
+					}
+				}
+			}
+		}
+	}
+}
+//end review page
+
+//contact page
+.contact-page {
+	position: relative;
+	width: 100%;
+	padding: 30px 0;
+	padding-bottom: 0;
+	margin-bottom: 0;
+
+	.contact-wave {
+		width: 100% !important;
+		margin: auto 0;
+		padding: 0;
+		margin-bottom: -10px;
+	}
+
+	.heading {
+		margin-bottom: 20px;
+		@include tab {
+			margin-left: 10%;
+		}
+
+		@include large {
+			margin-left: 15%;
+		}
+	}
+
+	&::before {
+		content: "";
+		background: url(../images//contact-bg.png);
+		background-size: cover;
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		left: 0px;
+		opacity: 0.15;
+		z-index: -1;
+	}
+	.content {
+		padding: 20px;
+		@include flex;
+		flex-direction: column;
+		@include desk {
+			padding: 20px 100px;
+			flex-direction: row;
+		}
+		@include large {
+			padding: 20px 200px;
+			flex-direction: row;
+		}
+
+		.form-sec {
+			width: 100%;
+
+			@include flex;
+			form {
+				width: 100%;
+				background-color: $secondary;
+				@include flex;
+				flex-direction: column;
+				padding: 40px;
+				border-radius: 15px;
+				box-shadow: 3px 5px 15px rgb(167, 167, 167);
+				max-width: 380px;
+				margin: auto;
+				@include desk {
+					max-width: 350px;
+				}
+
+				.item {
+					@include flex;
+					flex-direction: column;
+					align-items: flex-start;
+					width: 100%;
+					margin-bottom: 10px;
+					@include tab {
+						width: 95%;
+					}
+
+					input {
+						border: none;
+						border-radius: 30px;
+						width: calc(100% - 40px);
+						height: 45px;
+						padding: 0 20px;
+						font-size: 1rem;
+						margin: 10px auto;
+					}
+
+					textarea {
+						border: none;
+						border-radius: 30px;
+						width: calc(100% - 30px);
+						padding: 15px;
+						font-size: 1rem;
+						margin-top: 10px;
+					}
+					button {
+						margin-top: 1rem;
+					}
+				}
+			}
+		}
+		.contact-info {
+			width: 100%;
+			padding: 30px 0;
+			.item {
+				margin-bottom: 20px;
+
+				@include flex;
+				flex-direction: column;
+				.icon-wrapper {
+					margin: 0.6rem;
+
+					@include flex;
+					flex-wrap: wrap;
+					flex-direction: column;
+					@include tab {
+						flex-direction: row;
+					}
+					i {
+						padding: 20px;
+						background-color: $accent;
+						border-radius: 50%;
+						font-size: 1rem;
+						margin-right: 1rem;
+					}
+					p {
+						font-weight: bold;
+						font-size: 0.9rem;
+					}
+				}
+				a {
+					width: 75%;
+					max-width: 400px;
+					text-decoration: none;
+					text-align: center;
+					@include desk {
+						max-width: 400px;
+					}
+				}
+			}
+		}
+	}
+}
+//end contact page
+
+//location page
+.location-page {
+	width: 100%;
+	background-color: black;
+	img {
+		position: absolute;
+		width: 100%;
+		margin-top: -110px;
+	}
+
+	.heading {
+		color: white;
+
+		margin-bottom: 20px;
+		@include tab {
+			margin-left: 10%;
+		}
+
+		@include large {
+			margin-left: 15%;
+		}
+	}
+	.content {
+		color: white;
+		padding: 20px;
+		@include flex;
+		flex-direction: column;
+		@include desk {
+			padding: 20px 100px;
+			flex-direction: row;
+		}
+		@include large {
+			padding: 20px 200px;
+			flex-direction: row;
+		}
+
+		.form-sec {
+			width: 100%;
+
+			.gmap-canvas {
+				width: 100%;
+				@include flex;
+				iframe {
+					width: 100%;
+					border-radius: 15px;
+					max-width: 480px;
+					height: 500px;
+					@include desk {
+						max-width: 450px;
+					}
+				}
+			}
+		}
+		.contact-info {
+			width: 100%;
+			padding: 30px 0;
+			.item {
+				margin-bottom: 20px;
+
+				@include flex;
+				flex-direction: column;
+				.icon-wrapper {
+					margin: 0.6rem;
+					@include flex;
+					i {
+						font-size: 2rem;
+						margin-right: 1rem;
+						color: $accent;
+					}
+					p {
+						font-weight: bold;
+						font-size: 1rem;
+					}
+				}
+				.address {
+					background-color: $secondary;
+					color: $dark;
+					padding: 20px 40px;
+					border-radius: 20px;
+					@include flex;
+					flex-direction: column;
+					p {
+						max-width: 200px;
+						text-align: center;
+						line-height: 2rem;
+					}
+					button {
+						i {
+							margin-left: 5px;
+						}
+					}
+				}
+				.hours {
+					.day {
+						@include flex;
+
+						flex-direction: column;
+						align-items: flex-end;
+						justify-content: center;
+						p {
+							margin: 8px;
+							span {
+								opacity: 0.7;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.socials {
+		@include flex;
+		flex-direction: column;
+		padding-bottom: 20px;
+		@include desk {
+			flex-direction: row;
+		}
+
+		.icons {
+			display: flex;
+			.icon {
+				border-radius: 50%;
+				background-color: $accent;
+				text-decoration: none;
+				margin: 1rem;
+				@include flex;
+				height: 50px;
+				width: 50px;
+				transition: all 200ms ease-in-out;
+				&:hover {
+					cursor: pointer;
+					transform: scale(1.1);
+					background-color: darken($accent, 20);
+				}
+
+				i {
+					font-size: 1.2rem;
+					color: $light;
+				}
+			}
+		}
+		.footer-text {
+			a {
+				text-decoration: none;
+				color: $accent;
+			}
+		}
+	}
+}
+//end location page
+
+//home loader
+.home-alert-wrapper {
+	z-index: 99;
+	top: 0;
+	right: 0;
+	position: fixed;
+	height: 100vh;
+	width: 100%;
+	background-color: rgb(0, 0, 0);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	.loader-home {
+		margin-top: -125px;
+		height: 200px;
+		width: 200px;
+		object-fit: cover;
+	}
+}
+//end home loader
+//deli page
+.deli-page {
+	padding: 10px 20px;
+	padding-bottom: 50px;
+	.heading {
+		margin-bottom: 1rem;
+	}
+	@include tab {
+		.heading {
+			padding: 0 50px;
+		}
+	}
+
+	.deli-overlay {
+		position: fixed;
+		width: 100%;
+		height: 100vh;
+		background: url(../images/gallery-bg.png);
+		top: 0;
+		opacity: 0.1;
+		z-index: -1;
+	}
+	.buttons {
+		z-index: 1;
+
+		width: 100%;
+		@include flex;
+		flex-direction: column;
+		@include desk {
+			flex-direction: row;
+		}
+		a {
+			text-decoration: none;
+			margin: 5px;
+			width: 50%;
+			text-align: center;
+			max-width: 400px;
+		}
+	}
+}
+//end deli page
+
+.deli-items {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	@include desk {
+		width: 80%;
+		flex-wrap: wrap;
+	}
+	.deli-item {
+		@include flex;
+		justify-content: space-between;
+		width: 70%;
+		background-color: $accent;
+		padding: 0.5rem 30px;
+		backdrop-filter: blur(2px);
+		border-radius: 10px;
+		max-width: 400px;
+		margin: 5px;
+		@include desk {
+			width: 40%;
+		}
+
+		.price {
+			&::before {
+				content: "$";
+			}
+		}
+	}
+}

@@ -1,0 +1,67 @@
+//colors
+$primary: #044ace;
+$secondary: #efefef;
+$accent: #f58220;
+$light: #ffffff;
+$dark: black;
+$red: #db4546;
+
+//end colors
+
+//screen break-points
+$tab: 580px;
+$desk: 1040px;
+$large: 1600px;
+//end screen break-points
+
+// responsive break-point mixins
+
+@mixin tab {
+	@media (min-width: #{$tab}) {
+		@content;
+	}
+}
+@mixin desk {
+	@media (min-width: #{$desk}) {
+		@content;
+	}
+}
+@mixin large {
+	@media (min-width: #{$large}) {
+		@content;
+	}
+}
+//end responsice break-point  mixins
+
+//flex
+@mixin flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+//end flex
+
+//button
+@mixin btn($color) {
+	padding: 15px 40px;
+	border-radius: 5px;
+	border: none;
+	outline: none;
+	color: $light;
+	background-color: #{$color};
+	font-size: 1rem;
+	font-weight: bold;
+	box-shadow: 2px 2px 2px darken($color, 15%);
+
+	&:hover {
+		cursor: pointer;
+		background-color: darken($color, 10%);
+	}
+	&:active {
+		cursor: pointer;
+		background-color: darken($color, 20%);
+	}
+	@content;
+}
+
+//end button
