@@ -19,7 +19,7 @@ const Header = () => {
 					<Link to='/'>
 						{" "}
 						<img
-							src='https://live.staticflickr.com/65535/51963270520_50a18c04a2_o.png'
+							src='https://live.staticflickr.com/65535/52078193037_a8523cc475_o.png'
 							alt='mt everest logo'
 						/>
 					</Link>

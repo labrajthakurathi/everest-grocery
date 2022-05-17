@@ -31,7 +31,7 @@ const Landing = () => {
 				</div>
 				<div className='landing-content'>
 					<img
-						src='https://live.staticflickr.com/65535/51962773708_6e81dcbbab_o.png'
+						src='https://live.staticflickr.com/65535/52079475274_2987765ce4_o.png'
 						alt=''
 						className='cart'
 						style={moveCart}
