@@ -899,44 +899,7 @@ body {
 			}
 		}
 	}
-	.socials {
-		@include flex;
-		flex-direction: column;
-		padding-bottom: 20px;
-		@include desk {
-			flex-direction: row;
-		}
 
-		.icons {
-			display: flex;
-			.icon {
-				border-radius: 50%;
-				background-color: $accent;
-				text-decoration: none;
-				margin: 1rem;
-				@include flex;
-				height: 50px;
-				width: 50px;
-				transition: all 200ms ease-in-out;
-				&:hover {
-					cursor: pointer;
-					transform: scale(1.1);
-					background-color: darken($accent, 20);
-				}
-
-				i {
-					font-size: 1.2rem;
-					color: $light;
-				}
-			}
-		}
-		.footer-text {
-			a {
-				text-decoration: none;
-				color: $accent;
-			}
-		}
-	}
 }
 //end location page
 
@@ -973,6 +936,7 @@ body {
 		}
 	}
 
+
 	.deli-overlay {
 		position: fixed;
 		width: 100%;
@@ -991,6 +955,7 @@ body {
 		@include desk {
 			flex-direction: row;
 		}
+	
 		a {
 			text-decoration: none;
 			margin: 5px;
@@ -1012,7 +977,9 @@ body {
 	@include desk {
 		width: 80%;
 		flex-wrap: wrap;
+		max-width: 1300px;
 	}
+	
 	.deli-item {
 		@include flex;
 		justify-content: space-between;
@@ -1026,6 +993,7 @@ body {
 		@include desk {
 			width: 40%;
 		}
+		
 
 		.price {
 			&::before {
@@ -1034,3 +1002,59 @@ body {
 		}
 	}
 }
+
+//footer
+.socials {
+	bottom: 0;
+	width: 100%;
+	background-color: black;
+	@include flex;
+	flex-direction: column;
+	padding-bottom: 20px;
+	@include desk {
+		flex-direction: row;
+	}
+
+	.icons {
+		display: flex;
+		.icon {
+			border-radius: 50%;
+			background-color: $accent;
+			text-decoration: none;
+			margin: 1rem;
+			@include flex;
+			height: 50px;
+			width: 50px;
+			transition: all 200ms ease-in-out;
+			&:hover {
+				cursor: pointer;
+				transform: scale(1.1);
+				background-color: darken($accent, 20);
+			}
+
+			i {
+				font-size: 1.2rem;
+				color: $light;
+			}
+		}
+	}
+	.footer-text {
+		a {
+			text-decoration: none;
+			color: $accent;
+		}
+	}
+}
+//end footer
+
+//error
+.error{
+	height: 70vh;
+	width:100%;
+	@include flex;
+	color:black;
+	@include desk{
+		height:90vh;
+	}
+}
+//end error
